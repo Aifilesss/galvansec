@@ -17,10 +17,8 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const bootEl = document.getElementById('boot-sequence');
 if (bootEl) {
     const lines = [
-        { type: 'info', text: 'Last login: ' + new Date().toUTCString() + ' on ttys001' },
-        { type: 'cmd', prompt: 'galvan@sec', cmd: ':~$ cat philosophy.txt' },
-        { type: 'quote', text: '"Security is a governance challenge disguised as a technical one."' },
-        { type: 'cmd', prompt: 'galvan@sec', cmd: ':~$ _' }
+        { type: 'cmd', prompt: 'galvan@sec', cmd: 'cat philosophy.txt' },
+        { type: 'quote', text: '"Security is a governance challenge disguised as a technical one."' }
     ];
 
     let lineIndex = 0;
@@ -35,24 +33,6 @@ if (bootEl) {
         }
 
         const line = lines[lineIndex];
-
-        if (line.type === 'info') {
-            currentLine = document.createElement('span');
-            currentLine.className = 'boot-line boot-info';
-            bootEl.appendChild(currentLine);
-            const text = line.text;
-            if (charIndex < text.length) {
-                currentLine.textContent = text.slice(0, charIndex + 1);
-                charIndex++;
-                setTimeout(renderBoot, 18 + Math.random() * 22);
-            } else {
-                currentLine.textContent = text;
-                lineIndex++;
-                charIndex = 0;
-                setTimeout(renderBoot, 60);
-            }
-            return;
-        }
 
         if (line.type === 'quote') {
             currentLine = document.createElement('span');
@@ -126,7 +106,7 @@ if (bootEl) {
                 charIndex = 0;
                 setTimeout(renderBoot, 60);
             } else if (phase === 'cmdtext') {
-                const cmdText = line.cmd.replace(/^:~\$\s*/, '');
+                const cmdText = line.cmd;
                 if (charIndex < cmdText.length) {
                     currentLine.innerHTML += `<span class="boot-cmd">${escapeHtml(cmdText.slice(0, charIndex + 1))}</span>`;
                     charIndex++;
@@ -156,44 +136,6 @@ if (bootEl) {
 
     setTimeout(renderBoot, 200);
 }
-
-// Typed badge
-const phrases = [
-    'Open to opportunities',
-    'Cybersecurity & GRC',
-    'Palm Beach State College',
-    'ISSA – South Florida',
-];
-
-const typedEl = document.getElementById('typed-text');
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
-function type() {
-    const current = phrases[phraseIndex];
-    if (!typedEl) return;
-
-    if (!isDeleting) {
-        typedEl.textContent = current.slice(0, charIndex + 1);
-        charIndex++;
-        if (charIndex === current.length) {
-            setTimeout(() => { isDeleting = true; type(); }, 1800);
-            return;
-        }
-    } else {
-        typedEl.textContent = current.slice(0, charIndex - 1);
-        charIndex--;
-        if (charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-        }
-    }
-
-    setTimeout(type, isDeleting ? 45 : 80);
-}
-
-setTimeout(type, 600);
 
 // Matrix rain
 const canvas = document.getElementById('matrix');
