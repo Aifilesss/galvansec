@@ -13,159 +13,50 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Boot sequence
-const bootEl = document.getElementById('boot-sequence');
-if (bootEl) {
-    const lines = [
-        { type: 'cmd', prompt: 'galvan@sec', cmd: 'cat philosophy.txt' },
-        { type: 'quote', text: '"Security is a governance challenge disguised as a technical one."' }
-    ];
+// Terminal philosophy animation
+const command = "cat philosophy.txt";
+const philosophy = "Security is a governance challenge disguised as a technical one.";
 
-    let lineIndex = 0;
-    let charIndex = 0;
-    let currentLine = null;
-    let phase = 'prompt';
-    let built = '';
+const cmdEl = document.getElementById("cmdText");
+const outputEl = document.getElementById("output");
+const cursorEl = document.getElementById("cursor");
+const terminalEl = document.getElementById("terminal");
 
-    function renderBoot() {
-        if (lineIndex >= lines.length) {
-            bootEl.innerHTML = Array.from(bootEl.querySelectorAll('.boot-line')).map(el => el.outerHTML).join('') + '<span class="boot-cursor"></span>';
-            return;
-        }
+let running = false;
 
-        const line = lines[lineIndex];
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-        if (line.type === 'quote') {
-            currentLine = document.createElement('span');
-            currentLine.className = 'boot-line boot-quote-line';
-            bootEl.appendChild(currentLine);
-            const text = line.text;
-            if (charIndex < text.length) {
-                currentLine.innerHTML = `<span class="boot-quote">${escapeHtml(text.slice(0, charIndex + 1))}</span>`;
-                charIndex++;
-                setTimeout(renderBoot, 25 + Math.random() * 35);
-            } else {
-                currentLine.innerHTML = `<span class="boot-quote">${escapeHtml(text)}</span>`;
-                lineIndex++;
-                charIndex = 0;
-                setTimeout(renderBoot, 160);
-            }
-            return;
-        }
+async function playAnimation() {
+    if (running) return;
+    running = true;
 
-        if (line.type === 'cmd') {
-            if (!currentLine) {
-                currentLine = document.createElement('span');
-                currentLine.className = 'boot-line boot-cmd-line';
-                bootEl.appendChild(currentLine);
-                built = '';
-            }
+    cmdEl.textContent = "";
+    outputEl.textContent = "";
+    cursorEl.style.display = "inline-block";
 
-            if (phase === 'prompt') {
-                const promptText = line.prompt;
-                built = promptText.slice(0, charIndex + 1);
-                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
-                charIndex++;
-                if (charIndex < promptText.length) {
-                    setTimeout(renderBoot, 30 + Math.random() * 40);
-                } else {
-                    phase = 'at';
-                    charIndex = 0;
-                    setTimeout(renderBoot, 50);
-                }
-                return;
-            }
-
-            if (phase === 'at') {
-                built += '@';
-                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
-                phase = 'host';
-                setTimeout(renderBoot, 35);
-                return;
-            }
-
-            if (phase === 'host') {
-                const hostText = 'sec';
-                built += hostText.slice(0, charIndex + 1);
-                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
-                charIndex++;
-                if (charIndex < hostText.length) {
-                    setTimeout(renderBoot, 30 + Math.random() * 35);
-                } else {
-                    phase = 'colon';
-                    charIndex = 0;
-                    setTimeout(renderBoot, 40);
-                }
-                return;
-            }
-
-            if (phase === 'colon') {
-                built += ':';
-                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
-                phase = 'tilde';
-                setTimeout(renderBoot, 35);
-                return;
-            }
-
-            if (phase === 'tilde') {
-                built += '~';
-                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
-                phase = 'dollar';
-                charIndex = 0;
-                setTimeout(renderBoot, 40);
-                return;
-            }
-
-            if (phase === 'dollar') {
-                built += '$ ';
-                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
-                phase = 'space';
-                setTimeout(renderBoot, 50);
-                return;
-            }
-
-            if (phase === 'space') {
-                built += ' ';
-                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
-                phase = 'cmdtext';
-                charIndex = 0;
-                setTimeout(renderBoot, 60);
-                return;
-            }
-
-            if (phase === 'cmdtext') {
-                const cmdText = line.cmd;
-                const cmdSoFar = cmdText.slice(0, charIndex + 1);
-                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span><span class="boot-cmd">${escapeHtml(cmdSoFar)}</span>`;
-                charIndex++;
-                if (charIndex < cmdText.length) {
-                    setTimeout(renderBoot, 22 + Math.random() * 28);
-                } else {
-                    phase = 'next';
-                    lineIndex++;
-                    currentLine = null;
-                    built = '';
-                    charIndex = 0;
-                    phase = 'prompt';
-                    setTimeout(renderBoot, 140);
-                }
-                return;
-            }
-
-            return;
-        }
-
-        lineIndex++;
-        setTimeout(renderBoot, 40);
+    // Type the command
+    for (let i = 0; i < command.length; i++) {
+        cmdEl.textContent += command[i];
+        await sleep(35 + Math.random() * 40);
     }
 
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+    await sleep(400);
+    cursorEl.style.display = "none";
+
+    // Type the philosophy output
+    for (let i = 0; i < philosophy.length; i++) {
+        outputEl.textContent += philosophy[i];
+        await sleep(28 + Math.random() * 35);
     }
 
-    setTimeout(renderBoot, 200);
+    running = false;
+}
+
+if (terminalEl) {
+    terminalEl.addEventListener("click", playAnimation);
+    window.addEventListener("load", () => setTimeout(playAnimation, 400));
 }
 
 // Matrix rain

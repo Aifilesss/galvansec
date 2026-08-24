@@ -31,7 +31,20 @@
     <main>
         <section id="hero" class="hero">
             <div class="container">
-                <div class="boot-sequence" id="boot-sequence"></div>
+                <div class="terminal" id="terminal">
+                    <div class="titlebar">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="body">
+                        <div class="prompt-line">
+                            <span class="prompt">galvan@sec</span><span class="cmd">:~$ </span><span id="cmdText"></span><span class="cursor" id="cursor"></span>
+                        </div>
+                        <div class="output" id="output"></div>
+                    </div>
+                </div>
+                <p class="hint">click the terminal to replay</p>
                 <h1 class="hero-title">
                     Mario A. Galvan
                 </h1>
