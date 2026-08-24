@@ -190,6 +190,46 @@ a:hover {
     padding: 0.5rem 0;
 }
 
+.terminal-boot {
+    font-family: var(--font-mono);
+    font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+    color: var(--text-secondary);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+    min-height: 3.5rem;
+}
+
+.terminal-boot .boot-line {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.terminal-boot .boot-prompt {
+    color: #10b981;
+}
+
+.terminal-boot .boot-cmd {
+    color: var(--text-primary);
+}
+
+.terminal-boot .boot-quote {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.terminal-boot .boot-cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1em;
+    background: var(--accent);
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+}
+
 .hero-badge {
     display: inline-flex;
     align-items: center;
