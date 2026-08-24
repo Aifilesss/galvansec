@@ -204,11 +204,13 @@ a:hover {
     line-height: 1.6;
     color: #d4d4d4;
     min-height: 90px;
+    text-align: left;
 }
 
 .prompt-line {
     white-space: pre-wrap;
     word-break: break-word;
+    text-align: left;
 }
 
 .prompt {
@@ -288,6 +290,7 @@ a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
+    margin-top: 1.75rem;
     margin-bottom: 2.5rem;
 }
 
