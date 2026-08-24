@@ -178,14 +178,16 @@ a:hover {
 
 .ascii-header {
     font-family: var(--font-mono);
-    font-size: clamp(0.45rem, 1.1vw, 0.7rem);
-    line-height: 1.15;
+    font-size: clamp(0.28rem, 0.9vw, 0.6rem);
+    line-height: 1.2;
     color: var(--accent);
     white-space: pre;
     overflow-x: auto;
-    margin-bottom: 1.75rem;
-    opacity: 0.9;
-    text-shadow: 0 0 18px rgba(59, 130, 246, 0.35);
+    margin-bottom: 2rem;
+    opacity: 0.95;
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.4), 0 0 40px rgba(59, 130, 246, 0.15);
+    letter-spacing: 0.05em;
+    padding: 0.5rem 0;
 }
 
 .hero-badge {
