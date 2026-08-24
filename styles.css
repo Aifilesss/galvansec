@@ -208,6 +208,7 @@ a:hover {
 }
 
 .prompt-line {
+    display: block;
     white-space: pre-wrap;
     word-break: break-word;
     text-align: left;
@@ -224,8 +225,10 @@ a:hover {
 }
 
 .output {
+    display: block;
     color: #eaeaea;
     margin-top: 10px;
+    text-align: left;
 }
 
 .cursor {
