@@ -197,7 +197,7 @@ a:hover {
 }
 .dot.red { background: #ff5f56; }
 .dot.yellow { background: #ffbd2e; }
-.dot.green { background: #27c93f; }
+.dot.green { background: #22C55E !important; }
 
 .terminal .body {
     width: 100%;
@@ -219,7 +219,7 @@ a:hover {
 }
 
 .terminal .prompt {
-    color: #00FF66;
+    color: #22C55E !important;
 }
 .terminal .path {
     color: #6cb6ff;
@@ -464,8 +464,8 @@ section {
 }
 
 .terminal-dot:nth-child(3) {
-    background: #27c93f;
-    box-shadow: 0 0 6px rgba(39, 201, 63, 0.45);
+    background: #22C55E !important;
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.45);
 }
 
 .terminal-title {
@@ -620,7 +620,7 @@ section {
 }
 
 .prompt {
-    color: #00FF66;
+    color: #22C55E !important;
 }
 
 .command {
