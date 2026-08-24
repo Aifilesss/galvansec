@@ -169,6 +169,10 @@ a:hover {
 }
 
 /* Terminal philosophy */
+.terminal-full {
+    width: 100%;
+}
+
 .terminal {
     width: 100%;
     background: #1a1a1a;
@@ -197,20 +201,22 @@ a:hover {
 .dot.green { background: #27c93f; }
 
 .terminal .body {
-    padding: 32px 30px 48px;
+    width: 100%;
+    padding: 32px 20px 48px;
     font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
     font-size: clamp(1.05rem, 2.9vw, 18px);
     line-height: 1.6;
     color: #d4d4d4;
     min-height: 140px;
-    text-align: left !important;
+    text-align: left;
+    align-items: flex-start;
 }
 
 .terminal .prompt-line {
-    display: block !important;
+    display: block;
     white-space: pre-wrap;
     word-break: break-word;
-    text-align: left !important;
+    text-align: left;
 }
 
 .terminal .prompt {
@@ -224,10 +230,10 @@ a:hover {
 }
 
 .terminal .output {
-    display: block !important;
+    display: block;
     color: #eaeaea;
     margin-top: 10px;
-    text-align: left !important;
+    text-align: left;
 }
 
 .cursor {
