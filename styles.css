@@ -220,7 +220,7 @@ a:hover {
 }
 
 .terminal .prompt {
-    color: #27c93f;
+    color: #00FF66;
 }
 .terminal .path {
     color: #6cb6ff;
@@ -621,7 +621,7 @@ section {
 }
 
 .prompt {
-    color: #10b981;
+    color: #00FF66;
 }
 
 .command {
