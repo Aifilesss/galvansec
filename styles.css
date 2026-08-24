@@ -170,8 +170,8 @@ a:hover {
 
 /* Terminal philosophy */
 .terminal {
-    width: 640px;
-    max-width: 90vw;
+    width: 100%;
+    max-width: 640px;
     background: #1a1a1a;
     border-radius: 10px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
@@ -200,7 +200,7 @@ a:hover {
 .body {
     padding: 20px 22px 30px;
     font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
-    font-size: 15px;
+    font-size: clamp(0.85rem, 2.5vw, 15px);
     line-height: 1.6;
     color: #d4d4d4;
     min-height: 90px;
