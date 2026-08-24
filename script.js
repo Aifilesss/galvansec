@@ -25,6 +25,7 @@ if (bootEl) {
     let charIndex = 0;
     let currentLine = null;
     let phase = 'prompt';
+    let built = '';
 
     function renderBoot() {
         if (lineIndex >= lines.length) {
@@ -57,70 +58,100 @@ if (bootEl) {
                 currentLine = document.createElement('span');
                 currentLine.className = 'boot-line boot-cmd-line';
                 bootEl.appendChild(currentLine);
+                built = '';
             }
 
             if (phase === 'prompt') {
                 const promptText = line.prompt;
+                built = promptText.slice(0, charIndex + 1);
+                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
+                charIndex++;
                 if (charIndex < promptText.length) {
-                    currentLine.innerHTML += `<span class="boot-prompt">${escapeHtml(promptText.slice(0, charIndex + 1))}</span>`;
-                    charIndex++;
                     setTimeout(renderBoot, 30 + Math.random() * 40);
                 } else {
-                    currentLine.innerHTML += `<span class="boot-prompt">${escapeHtml(promptText)}</span>`;
                     phase = 'at';
                     charIndex = 0;
                     setTimeout(renderBoot, 50);
                 }
-            } else if (phase === 'at') {
-                currentLine.innerHTML += '<span class="boot-at">@</span>';
+                return;
+            }
+
+            if (phase === 'at') {
+                built += '@';
+                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
                 phase = 'host';
                 setTimeout(renderBoot, 35);
-            } else if (phase === 'host') {
+                return;
+            }
+
+            if (phase === 'host') {
                 const hostText = 'sec';
+                built += hostText.slice(0, charIndex + 1);
+                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
+                charIndex++;
                 if (charIndex < hostText.length) {
-                    currentLine.innerHTML += `<span class="boot-host">${escapeHtml(hostText.slice(0, charIndex + 1))}</span>`;
-                    charIndex++;
                     setTimeout(renderBoot, 30 + Math.random() * 35);
                 } else {
-                    currentLine.innerHTML += `<span class="boot-host">${escapeHtml(hostText)}</span>`;
                     phase = 'colon';
                     charIndex = 0;
                     setTimeout(renderBoot, 40);
                 }
-            } else if (phase === 'colon') {
-                currentLine.innerHTML += '<span class="boot-colon">:</span>';
+                return;
+            }
+
+            if (phase === 'colon') {
+                built += ':';
+                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
                 phase = 'tilde';
                 setTimeout(renderBoot, 35);
-            } else if (phase === 'tilde') {
-                currentLine.innerHTML += '<span class="boot-tilde">~</span>';
+                return;
+            }
+
+            if (phase === 'tilde') {
+                built += '~';
+                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
                 phase = 'dollar';
                 charIndex = 0;
                 setTimeout(renderBoot, 40);
-            } else if (phase === 'dollar') {
-                currentLine.innerHTML += '<span class="boot-dollar">$ </span>';
+                return;
+            }
+
+            if (phase === 'dollar') {
+                built += '$ ';
+                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
                 phase = 'space';
                 setTimeout(renderBoot, 50);
-            } else if (phase === 'space') {
-                currentLine.innerHTML += ' ';
+                return;
+            }
+
+            if (phase === 'space') {
+                built += ' ';
+                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span>`;
                 phase = 'cmdtext';
                 charIndex = 0;
                 setTimeout(renderBoot, 60);
-            } else if (phase === 'cmdtext') {
+                return;
+            }
+
+            if (phase === 'cmdtext') {
                 const cmdText = line.cmd;
+                const cmdSoFar = cmdText.slice(0, charIndex + 1);
+                currentLine.innerHTML = `<span class="boot-prompt">${escapeHtml(built)}</span><span class="boot-cmd">${escapeHtml(cmdSoFar)}</span>`;
+                charIndex++;
                 if (charIndex < cmdText.length) {
-                    currentLine.innerHTML += `<span class="boot-cmd">${escapeHtml(cmdText.slice(0, charIndex + 1))}</span>`;
-                    charIndex++;
                     setTimeout(renderBoot, 22 + Math.random() * 28);
                 } else {
-                    currentLine.innerHTML += `<span class="boot-cmd">${escapeHtml(cmdText)}</span>`;
                     phase = 'next';
                     lineIndex++;
                     currentLine = null;
+                    built = '';
                     charIndex = 0;
                     phase = 'prompt';
                     setTimeout(renderBoot, 140);
                 }
+                return;
             }
+
             return;
         }
 
