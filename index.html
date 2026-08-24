@@ -31,19 +31,6 @@
     <main>
         <section id="hero" class="hero">
             <div class="container">
-                <div class="terminal" id="terminal">
-                    <div class="titlebar">
-                        <div class="dot red"></div>
-                        <div class="dot yellow"></div>
-                        <div class="dot green"></div>
-                    </div>
-                    <div class="body">
-                        <div class="prompt-line">
-                            <span class="prompt">galvan@sec</span><span class="cmd">:~$ </span><span id="cmdText"></span><span class="cursor" id="cursor"></span>
-                        </div>
-                        <div class="output" id="output"></div>
-                    </div>
-                </div>
                 <h1 class="hero-title">
                     Mario A. Galvan
                 </h1>
@@ -64,12 +51,27 @@
                     </span>
                 </div>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary">
+                    <a href="#contact" class="btn btn-terminal btn-primary-link">
                         <span class="btn-prefix">$</span> init_contact
                     </a>
                     <a href="https://github.com/aifilesss" target="_blank" rel="noopener" class="btn btn-terminal">
                         <span class="btn-prefix">&gt;</span> cat github_profile
                     </a>
+                </div>
+            </div>
+            <div class="container">
+                <div class="terminal" id="terminal">
+                    <div class="titlebar">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="body">
+                        <div class="prompt-line">
+                            <span class="prompt">galvan@sec</span><span class="cmd">:~$ </span><span id="cmdText"></span><span class="cursor" id="cursor"></span>
+                        </div>
+                        <div class="output" id="output"></div>
+                    </div>
                 </div>
             </div>
         </section>
