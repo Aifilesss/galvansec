@@ -170,7 +170,7 @@ a:hover {
 
 /* Terminal philosophy */
 .terminal {
-    max-width: 640px;
+    width: 100%;
     background: #1a1a1a;
     border-radius: 10px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
@@ -178,7 +178,6 @@ a:hover {
     cursor: pointer;
     border: 1px solid #2a2a2a;
     margin-bottom: 1.5rem;
-    margin-right: auto;
 }
 
 .titlebar {
