@@ -170,7 +170,6 @@ a:hover {
 
 /* Terminal philosophy */
 .terminal {
-    width: 100%;
     max-width: 640px;
     background: #1a1a1a;
     border-radius: 10px;
@@ -179,6 +178,7 @@ a:hover {
     cursor: pointer;
     border: 1px solid #2a2a2a;
     margin-bottom: 1.5rem;
+    margin-right: auto;
 }
 
 .titlebar {
@@ -197,38 +197,38 @@ a:hover {
 .dot.yellow { background: #ffbd2e; }
 .dot.green { background: #27c93f; }
 
-.body {
+.terminal .body {
     padding: 20px 22px 30px;
     font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
     font-size: clamp(0.85rem, 2.5vw, 15px);
     line-height: 1.6;
     color: #d4d4d4;
     min-height: 90px;
-    text-align: left;
+    text-align: left !important;
 }
 
-.prompt-line {
-    display: block;
+.terminal .prompt-line {
+    display: block !important;
     white-space: pre-wrap;
     word-break: break-word;
-    text-align: left;
+    text-align: left !important;
 }
 
-.prompt {
+.terminal .prompt {
     color: #27c93f;
 }
-.path {
+.terminal .path {
     color: #6cb6ff;
 }
-.cmd {
+.terminal .cmd {
     color: #d4d4d4;
 }
 
-.output {
-    display: block;
+.terminal .output {
+    display: block !important;
     color: #eaeaea;
     margin-top: 10px;
-    text-align: left;
+    text-align: left !important;
 }
 
 .cursor {
