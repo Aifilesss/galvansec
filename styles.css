@@ -315,9 +315,30 @@ section {
     border-bottom: 1px solid var(--border);
 }
 
-.about-grid {
+.about-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 220px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.about-image {
+    position: sticky;
+    top: 5.5rem;
+}
+
+.about-image img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.about-body {
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
 }
 
@@ -546,6 +567,23 @@ section {
 }
 
 /* Responsive */
+@media (max-width: 720px) {
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .about-image {
+        position: static;
+        max-width: 220px;
+        margin: 0 auto;
+    }
+
+    .about-image img {
+        aspect-ratio: 1/1;
+    }
+}
+
 @media (max-width: 640px) {
     .hero {
         padding: 3.5rem 0 3rem;
