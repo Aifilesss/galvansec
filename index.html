@@ -21,9 +21,9 @@
                 <span class="brand-text">whoami</span>
             </a>
             <ul class="nav-menu">
-                <li><a href="#about">./about</a></li>
-                <li><a href="#focus">./focus</a></li>
-                <li><a href="#contact">./contact</a></li>
+                <li><a href="#about">./about.sh</a></li>
+                <li><a href="#focus">./focus.sh</a></li>
+                <li><a href="#contact">./contact.sh</a></li>
             </ul>
         </div>
     </nav>
@@ -52,55 +52,26 @@
                 </div>
                 <div class="hero-actions">
                     <a href="#contact" class="btn btn-terminal btn-primary-link">
-                        <span class="btn-prefix">$</span> init_contact
+                        <span class="btn-prefix">$</span> ./contact.sh
                     </a>
                     <a href="https://github.com/aifilesss" target="_blank" rel="noopener" class="btn btn-terminal">
-                        <span class="btn-prefix">&gt;</span> cat github_profile
+                        <span class="btn-prefix">$</span> cat github_profile
                     </a>
                 </div>
             </div>
             <div class="container">
-                <div style="background: #1e1e1e; border-radius: 10px; overflow: hidden; box-shadow: 0 0 0 0.5px var(--border); font-family: -apple-system, BlinkMacSystemFont, 'SF Mono', Monaco, 'Courier New', monospace;">
-                  <div style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: #2d2d2d;">
-                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56;"></div>
-                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e;"></div>
-                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #27c93f;"></div>
-                  </div>
-                  <div id="term" style="padding: 16px; font-size: 13px; line-height: 1.7; cursor: pointer; text-align: left;">
-                    <div><span style="color: #5cd68a;">galvan@sec</span><span style="color: #999;">:~$</span> <span id="cmd" style="color: #eee;"></span></div>
-                    <div id="out" style="color: #ddd; white-space: pre-wrap; min-height: 20px; text-align: left;"></div>
-                    <div style="color: #666; font-size: 11px; margin-top: 1rem;">click to replay</div>
-                  </div>
-                  <script>
-                  const cmdEl = document.getElementById('cmd');
-                  const outEl = document.getElementById('out');
-                  const term = document.getElementById('term');
-                  const command = 'cat philosophy.txt';
-                  const text = 'Security is a governance challenge disguised as a technical one.';
-                  let running = false;
-
-                  async function type(el, str, delay) {
-                    el.textContent = '';
-                    for (let i = 0; i < str.length; i++) {
-                      el.textContent += str[i];
-                      await new Promise(r => setTimeout(r, delay));
-                    }
-                  }
-
-                  async function playAnimation() {
-                    if (running) return;
-                    running = true;
-                    cmdEl.textContent = '';
-                    outEl.textContent = '';
-                    await type(cmdEl, command, 45);
-                    await new Promise(r => setTimeout(r, 300));
-                    await type(outEl, text, 28);
-                    running = false;
-                  }
-
-                  term.addEventListener('click', playAnimation);
-                  playAnimation();
-                  </script>
+                <div class="terminal" id="terminal">
+                    <div class="titlebar">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="body">
+                        <div class="prompt-line">
+                            <span class="prompt">mario@galvansec</span><span class="cmd">:~$ </span><span id="cmdText"></span><span class="cursor" id="cursor"></span>
+                        </div>
+                        <div class="output" id="output"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -108,7 +79,7 @@
         <section id="about" class="about">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">./about</span>
+                    <span class="section-label">./about.sh</span>
                     <h2 class="section-title">Security is a governance challenge</h2>
                 </div>
                 <div class="about-layout">
@@ -144,7 +115,7 @@
         <section id="focus" class="focus">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">./focus</span>
+                    <span class="section-label">./focus.sh</span>
                     <h2 class="section-title">Building toward GRC</h2>
                 </div>
                 <p class="focus-intro">
@@ -182,7 +153,7 @@
         <section id="contact" class="contact">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">./contact</span>
+                    <span class="section-label">./contact.sh</span>
                     <h2 class="section-title">Get in touch</h2>
                 </div>
                 <div class="terminal-output">

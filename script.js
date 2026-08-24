@@ -13,6 +13,50 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// Terminal philosophy animation
+const command = "cat philosophy.txt";
+const philosophy = "Security is a governance challenge disguised as a technical one.";
+
+const cmdEl = document.getElementById("cmdText");
+const outputEl = document.getElementById("output");
+const cursorEl = document.getElementById("cursor");
+const terminalEl = document.getElementById("terminal");
+
+let running = false;
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function playAnimation() {
+    if (running) return;
+    running = true;
+
+    cmdEl.textContent = "";
+    outputEl.textContent = "";
+    cursorEl.style.display = "inline-block";
+
+    for (let i = 0; i < command.length; i++) {
+        cmdEl.textContent += command[i];
+        await sleep(35 + Math.random() * 40);
+    }
+
+    await sleep(400);
+    cursorEl.style.display = "none";
+
+    for (let i = 0; i < philosophy.length; i++) {
+        outputEl.textContent += philosophy[i];
+        await sleep(28 + Math.random() * 35);
+    }
+
+    running = false;
+}
+
+if (terminalEl) {
+    terminalEl.addEventListener("click", playAnimation);
+    window.addEventListener("load", () => setTimeout(playAnimation, 400));
+}
+
 // Matrix rain
 const canvas = document.getElementById('matrix');
 if (canvas) {
