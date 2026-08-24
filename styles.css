@@ -171,9 +171,21 @@ a:hover {
 /* Hero */
 .hero {
     position: relative;
-    padding: 5rem 0 4.5rem;
+    padding: 3.5rem 0 4rem;
     border-bottom: 1px solid var(--border);
     z-index: 1;
+}
+
+.ascii-header {
+    font-family: var(--font-mono);
+    font-size: clamp(0.45rem, 1.1vw, 0.7rem);
+    line-height: 1.15;
+    color: var(--accent);
+    white-space: pre;
+    overflow-x: auto;
+    margin-bottom: 1.75rem;
+    opacity: 0.9;
+    text-shadow: 0 0 18px rgba(59, 130, 246, 0.35);
 }
 
 .hero-badge {
