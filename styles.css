@@ -88,7 +88,7 @@ a:hover {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(10, 15, 26, 0.9);
+    background: rgba(10, 15, 26, 0.92);
     backdrop-filter: blur(16px) saturate(1.5);
     border-bottom: 1px solid var(--border);
 }
@@ -136,13 +136,13 @@ a:hover {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.75rem;
 }
 
 .nav-menu a {
     color: var(--text-secondary);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 500;
     position: relative;
     padding: 0.25rem 0;
@@ -180,12 +180,12 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.4rem 0.85rem;
+    padding: 0.45rem 0.9rem;
     background: var(--accent-glow);
     border: 1px solid var(--border-hover);
     border-radius: 6px;
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 500;
     color: var(--accent-hover);
     margin-bottom: 1.5rem;
@@ -202,7 +202,7 @@ a:hover {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2.25rem, 7vw, 4rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.03em;
@@ -215,19 +215,19 @@ a:hover {
 
 .hero-subtitle {
     font-family: var(--font-mono);
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(0.95rem, 2.2vw, 1.15rem);
     color: var(--text-secondary);
     font-weight: 400;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     letter-spacing: -0.01em;
 }
 
 .hero-description {
     color: var(--text-secondary);
-    font-size: 1.05rem;
+    font-size: 1rem;
     max-width: 600px;
     line-height: 1.7;
-    margin-bottom: 2.25rem;
+    margin-bottom: 2rem;
 }
 
 .hero-actions {
@@ -241,9 +241,9 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    padding: 0.85rem 1.5rem;
+    padding: 0.8rem 1.4rem;
     border-radius: var(--radius);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 600;
     transition: all 0.25s ease;
     cursor: pointer;
@@ -285,7 +285,7 @@ a:hover {
 .hero-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 .meta-item {
@@ -294,33 +294,33 @@ a:hover {
     gap: 0.5rem;
     color: var(--text-muted);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
 }
 
 /* Sections */
 section {
     position: relative;
-    padding: 5rem 0;
+    padding: 4.5rem 0;
     z-index: 1;
 }
 
 .section-header {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .section-label {
     display: block;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.65rem;
 }
 
 .section-title {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(1.6rem, 4vw, 2.25rem);
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.2;
@@ -334,7 +334,7 @@ section {
 
 .about-layout {
     display: grid;
-    grid-template-columns: 180px 1fr;
+    grid-template-columns: 160px 1fr;
     gap: 2.5rem;
     align-items: start;
 }
@@ -342,7 +342,6 @@ section {
 .about-image {
     position: sticky;
     top: 5.5rem;
-    max-width: 140px;
 }
 
 .about-image img {
@@ -378,7 +377,7 @@ section {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.85rem 1.25rem;
+    padding: 0.8rem 1.15rem;
     background: rgba(0, 0, 0, 0.3);
     border-bottom: 1px solid var(--border);
 }
@@ -404,44 +403,45 @@ section {
 .terminal-title {
     margin-left: auto;
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.1em;
 }
 
 .terminal-card p {
-    padding: 1.5rem;
+    padding: 1.25rem;
     color: var(--text-secondary);
     line-height: 1.7;
+    font-size: 0.95rem;
 }
 
 .terminal-card h3 {
-    font-size: 1rem;
-    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.65rem;
     color: var(--text-primary);
     font-weight: 600;
-    padding: 0 1.5rem;
-    padding-top: 1.25rem;
+    padding: 0 1.25rem;
+    padding-top: 1.15rem;
 }
 
 /* Focus */
 .focus-intro {
     color: var(--text-secondary);
-    font-size: 1.05rem;
+    font-size: 1rem;
     max-width: 650px;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     line-height: 1.7;
 }
 
 .focus-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
 }
 
 .focus-card {
-    padding: 1.75rem;
+    padding: 1.5rem;
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -476,18 +476,18 @@ section {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.85rem;
 }
 
 .focus-icon {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     color: var(--accent);
     font-family: var(--font-mono);
     font-weight: 700;
 }
 
 .focus-card h3 {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     display: flex;
     align-items: center;
     gap: 0.6rem;
@@ -536,7 +536,7 @@ section {
 }
 
 .terminal-output {
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
 }
 
 .terminal-line {
@@ -547,7 +547,7 @@ section {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .prompt {
@@ -561,15 +561,15 @@ section {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
 }
 
 .contact-card {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1.25rem 1.5rem;
+    padding: 1.1rem 1.25rem;
     transition: all 0.3s ease;
 }
 
@@ -587,8 +587,8 @@ section {
 }
 
 .contact-icon {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -605,7 +605,7 @@ section {
 
 .contact-label {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     color: var(--text-muted);
     margin-bottom: 0.2rem;
     text-transform: uppercase;
@@ -614,7 +614,7 @@ section {
 }
 
 .contact-value {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 500;
     color: var(--text-primary);
 }
@@ -626,7 +626,7 @@ section {
     padding: 2rem 0;
     text-align: center;
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     border-top: 1px solid var(--border);
     font-family: var(--font-mono);
 }
@@ -651,7 +651,7 @@ section {
 
 @media (max-width: 640px) {
     .hero {
-        padding: 3.5rem 0 3rem;
+        padding: 3.25rem 0 2.75rem;
     }
 
     .hero-actions {
@@ -660,13 +660,39 @@ section {
 
     .btn {
         justify-content: center;
+        width: 100%;
     }
 
     .nav-menu {
-        gap: 1.25rem;
+        gap: 1.1rem;
+    }
+
+    .nav-menu a {
+        font-size: 0.72rem;
+    }
+
+    .brand-text {
+        font-size: 0.92rem;
     }
 
     section {
-        padding: 3.5rem 0;
+        padding: 3rem 0;
+    }
+
+    .terminal-header {
+        padding: 0.7rem 1rem;
+    }
+
+    .terminal-card p {
+        padding: 1rem;
+        font-size: 0.92rem;
+    }
+
+    .contact-card {
+        padding: 1rem 1.1rem;
+    }
+
+    .contact-grid {
+        gap: 0.75rem;
     }
 }
