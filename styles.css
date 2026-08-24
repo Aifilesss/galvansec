@@ -169,12 +169,11 @@ a:hover {
 }
 
 /* Terminal philosophy */
-.terminal-full {
-    width: 100%;
-}
-
 .terminal {
     width: 100%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
     background: #1a1a1a;
     border-radius: 10px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.5);
