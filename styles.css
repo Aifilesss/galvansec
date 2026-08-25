@@ -65,7 +65,7 @@ a:hover {
     position: fixed;
     inset: 0;
     z-index: 0;
-    opacity: 0.28;
+    opacity: 0.45;
     pointer-events: none;
 }
 
@@ -77,10 +77,10 @@ a:hover {
     background: linear-gradient(
         to bottom,
         transparent 50%,
-        rgba(0, 0, 0, 0.08) 50%
+        rgba(0, 0, 0, 0.1) 50%
     );
     background-size: 100% 4px;
-    opacity: 0.55;
+    opacity: 0.75;
 }
 
 /* Navbar */
