@@ -733,32 +733,41 @@ section {
     }
 
     .nav-menu {
-        gap: 1.5rem;
+        gap: 1.8rem;
+
     }
 
     .nav-menu a {
-        font-size: 0.68rem;
+        font-size: 0.58rem;
+    padding: 0.2rem 0;
+
     }
 
     .brand-text {
-        font-size: 0.82rem;
+        font-size: 0.72rem;
+
     }
 
     section {
-        padding: 3rem 0;
+        padding: 2.5rem 0;
+
     }
 
     .terminal-header {
-        padding: 0.7rem 1rem;
+        padding: 0.5rem 0.5rem;
+
     }
 
     .terminal-card p {
-        padding: 1rem;
-        font-size: 0.92rem;
+        padding: 0.6rem;
+
+        font-size: 0.75rem;
+
     }
 
     .contact-card {
-        padding: 1rem 1.1rem;
+        padding: 0.5rem 0.6rem;
+
     }
 
 
