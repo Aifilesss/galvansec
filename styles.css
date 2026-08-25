@@ -65,7 +65,7 @@ a:hover {
     position: fixed;
     inset: 0;
     z-index: 0;
-    opacity: 0.08;
+    opacity: 0.12;
     pointer-events: none;
 }
 
@@ -80,7 +80,7 @@ a:hover {
         rgba(0, 0, 0, 0.08) 50%
     );
     background-size: 100% 4px;
-    opacity: 0.3;
+    opacity: 0.35;
 }
 
 /* Navbar */
@@ -733,11 +733,11 @@ section {
     }
 
     .nav-menu {
-        gap: 1.1rem;
+        gap: 1.5rem;
     }
 
     .nav-menu a {
-        font-size: 0.72rem;
+        font-size: 0.68rem;
     }
 
     .brand-text {
