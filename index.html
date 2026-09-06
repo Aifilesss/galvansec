@@ -2,15 +2,171 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<style>
+/* Critical cover paints before external styles. Fade is supplied by preloader-js. */
+#galvansec-preloader{position:fixed;inset:0;height:100%;z-index:2147483647;background:#020805;color:#b7ffca;font:12px/1.6 monospace;animation-duration:500ms;animation-fill-mode:forwards;animation-timing-function:ease-in-out}
+.preloader.fade-out{animation-name:fadeOut}@keyframes fadeOut{from{opacity:1}to{opacity:0}}
+#galvansec-preloader .animation{position:absolute;inset:0;width:100%;height:100%;margin:0;pointer-events:none}
+#matrix-canvas{display:block;width:100%;height:100%;opacity:.72}
+.boot-panel{position:absolute;left:50%;top:56%;transform:translate(-50%,-50%);width:min(520px,calc(100% - 48px));box-sizing:border-box;padding:24px;background:linear-gradient(135deg,#031109ed,#020805ed);border:1px solid #245437;box-shadow:0 0 60px #00ff4110}
+.boot-eyebrow{color:#dda95d;font-size:10px;letter-spacing:.15em;margin:0 0 12px}.boot-brand{font-size:clamp(24px,6vw,38px);letter-spacing:.08em;line-height:1.2;margin:0 0 22px;color:#e2ffea}.boot-brand span{color:#00ff41}
+#boot-log{white-space:pre-wrap;min-height:7em;margin:0 0 18px;font-size:clamp(10px,2.6vw,12px)}
+.boot-meta{display:flex;justify-content:space-between;gap:12px;font-size:10px;color:#8daa98}.boot-progress{display:block;width:100%;height:3px;accent-color:#00ff41;margin:10px 0 18px;border:0}.boot-progress::-webkit-progress-bar{background:#183423}.boot-progress::-webkit-progress-value{background:#00ff41}
+#boot-skip{display:block;margin-left:auto;background:transparent;border:1px solid #376346;color:#b7ffca;padding:10px 16px;min-height:44px;font:inherit;cursor:pointer}#boot-skip:focus-visible{outline:2px solid #dda95d;outline-offset:4px}
+@media(max-width:480px){.boot-panel{padding:20px;top:50%}.boot-eyebrow{letter-spacing:.08em}}
+@media(prefers-reduced-motion:reduce){#matrix-canvas{display:none}}
+</style>
+<noscript><style>#galvansec-preloader{display:none!important}</style></noscript>
+<script>window.galvansecBootStarted=performance.now();</script>
+<link rel="stylesheet" href="assets/css/preloader.css" media="print" onload="this.media='all'">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mario A. Galvan — Cybersecurity & GRC</title>
     <meta name="description" content="Portfolio of Mario A. Galvan — cybersecurity governance, risk, and compliance.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.5f3cb07.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles.5f3cb07.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.5f3cb07.css"></noscript>
 </head>
 <body>
+<div class="preloader" id="galvansec-preloader" aria-label="Loading Galvansec portfolio">
+ <div class="animation"><canvas id="matrix-canvas" aria-hidden="true"></canvas></div>
+ <div class="boot-panel">
+  <p class="boot-eyebrow">PORTFOLIO / SECURE SESSION BOOT</p>
+  <h2 class="boot-brand">GALVAN<span>SEC</span></h2>
+  <pre id="boot-log" aria-hidden="true">INITIALIZING SECURE SESSION...</pre>
+  <div class="boot-meta"><span>CONTENT READINESS</span><span id="boot-percent">0%</span></div>
+  <progress class="boot-progress" id="boot-progress" max="100" value="0" aria-label="Portfolio assets loaded"></progress>
+  <button id="boot-skip" type="button">Skip intro ↗</button>
+ </div>
+</div>
+<!-- Unmodified preloader-js 1.0.1, inlined so a CDN outage cannot trap visitors.
+     Source: HQarroum/preloader; license: assets/js/preloader-LICENSE. -->
+<script>
+/**
+  * Exporting the `preloader` module appropriately given
+  * the environment (AMD, Node.js and the browser).
+  */
+ (function (name, definition) {
+    /* istanbul ignore next */
+    if (typeof define === 'function' && define.amd) {
+      // Defining the module in an AMD fashion.
+      define([], definition);
+    } else if (typeof module !== 'undefined' && module.exports) {
+      module.exports = definition();
+    } else {
+      const gl       = this;
+      const instance = definition();
+      const old      = gl[name];
+
+      /**
+       * Allowing to scope the module
+       * avoiding global namespace pollution.
+       */
+      instance.noConflict = function () {
+          gl[name] = old;
+          return instance;
+      };
+      // Exporting the module in the global
+      // namespace in a browser context.
+      gl[name] = instance;
+    }
+ })('preloader', function () {
+
+  let handle      = null;
+  const timeout   = 500;
+  const preloader = document.querySelector('.preloader');
+  const animation = document.querySelector('.animation');
+
+  /**
+   * Exporting public functions.
+   */
+  return {
+
+    /**
+     * Shows the preloader.
+     */
+    show: () => {
+      if (preloader.classList.contains('fade-out')) {
+        preloader.classList.remove('fade-out');
+        preloader.style.display = 'block';
+        preloader.style.opacity = 1;
+      }
+    },
+
+    /**
+     * Hides the preloader.
+     */
+    hide: () => {
+      if (!preloader.classList.contains('fade-out')) {
+        clearTimeout(handle);
+        preloader.classList.add('fade-out');
+        handle = setTimeout(() => {
+          preloader.style.display = 'none';
+        }, timeout);
+      }
+    }
+  };
+ });
+</script>
+<script>
+(() => {
+  const cover = document.getElementById('galvansec-preloader');
+  const skip = document.getElementById('boot-skip');
+  const progress = document.getElementById('boot-progress');
+  const label = document.getElementById('boot-percent');
+  const log = document.getElementById('boot-log');
+  // Tune timeout here: 2000ms + the library's 500ms fade = 2500ms maximum.
+  const MAX_WAIT = 2000;
+  let done = false, cleanup = () => {}, completed = 0, typing;
+  const boot = window.galvansecBoot = {
+    get done() { return done; },
+    attach(dispose) { if (done) dispose(); else cleanup = dispose; },
+    hide(reason) {
+      if (done) return;
+      done = true;
+      clearTimeout(watchdog); clearInterval(typing);
+      cover.dataset.exitReason = reason;
+      cover.style.pointerEvents = 'none';
+      cover.setAttribute('aria-hidden', 'true');
+      if (document.activeElement === skip) skip.blur();
+      skip.disabled = true;
+      // Stop WebGL immediately. The library alone owns the fade and removal.
+      cleanup();
+      window.preloader.hide();
+    }
+  };
+  const watchdog = setTimeout(() => boot.hide('timeout'), Math.max(0, MAX_WAIT - (performance.now() - window.galvansecBootStarted)));
+  window.preloader.show();
+  skip.addEventListener('click', () => boot.hide('skip'), {once:true});
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const lines = 'INITIALIZING SECURE SESSION...\nVERIFYING CONTROLS...\nLOADING GRC FRAMEWORK...';
+  let cursor = 30;
+  if (!reduced) typing = setInterval(() => { if(cursor < lines.length) log.textContent = lines.slice(0, ++cursor); }, 16);
+  // Progress counts settled critical resources, never elapsed time or pretend scans.
+  function settled() {
+    if (done) return;
+    completed++;
+    progress.value = Math.round(completed / 4 * 100);
+    label.textContent = progress.value + '%';
+    if(completed === 4) { log.textContent = 'ACCESS GRANTED — WELCOME'; boot.hide('ready'); }
+  }
+  const domReady = document.readyState === 'loading'
+    ? new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve, {once:true})) : Promise.resolve();
+  function resource(el) {
+    if (!el || el.sheet || (el.tagName === 'IMG' && el.complete)) return Promise.resolve();
+    return new Promise(resolve => { el.addEventListener('load', resolve, {once:true}); el.addEventListener('error', resolve, {once:true}); });
+  }
+  domReady.then(settled);
+  const stylesReady = resource(document.querySelector('link[href="styles.5f3cb07.css"]'));
+  stylesReady.then(settled);
+  domReady.then(() => resource(document.querySelector('img[src="assets/headshot.png"]'))).then(settled);
+  Promise.all([domReady, stylesReady, resource(document.querySelector('link[href*="fonts.googleapis.com/css"]'))])
+    .then(() => document.fonts ? document.fonts.ready : undefined).then(settled, settled);
+  if (!reduced) import('./assets/js/matrix-preloader.js').then(module => { if (!done) module.start(boot); }).catch(() => { /* Flat terminal remains usable without WebGL/CDN. */ });
+})();
+</script>
     <div class="scanlines"></div>
     <canvas id="matrix"></canvas>
 
