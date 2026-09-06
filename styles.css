@@ -121,3 +121,33 @@ body.motion-paused .ui-icon{transform:none!important;filter:none!important}
  .contact-heading .contact-arrow{display:none}
 }
 @media(prefers-reduced-motion:reduce){.ui-icon{transform:none!important;filter:none!important}}
+
+/* Readability and spacing refinement: preserve the Matrix visual identity. */
+.navbar nav a span{color:#a5b5a9}
+.hero-meta,.scene-top,.scene-caption>span,.hero-bottom,
+.file-label,.portrait-label,.portrait-label span+span,.small-label,
+.terminal-bar,.terminal-command,.contact-type,footer{color:#b2c0b6}
+.brand small,.hero-meta,.scene-top,.scene-caption>span,.hero-bottom,
+.section-kicker,.portrait-label,.small-label,.terminal-bar,
+.terminal-bar button,.badge,.contact-type,footer{font-size:13px;line-height:1.7}
+.scene-controls button,.terminal-command,.contact-command{font-size:14px}
+.focus-card li>span+span{font-size:13px;color:#a7baad}
+.terminal-bar button{min-height:44px}
+.internship-note{max-width:640px;font-size:17px;line-height:1.8;color:var(--text);margin:0 0 24px}
+@media(min-width:701px){
+  .section{padding-top:77px;padding-bottom:82px}
+  .terminal{margin-top:50px}
+  .terminal-content{padding-top:20px;padding-bottom:26px}
+}
+@media(min-width:701px) and (max-width:1050px){
+  .section{padding-top:62px;padding-bottom:62px}
+}
+@media(max-width:700px){
+  .navbar{grid-template-columns:minmax(0,1fr)}
+  .navbar .brand{grid-column:1;grid-row:1}
+  .hero-meta{font-size:13px}
+  .hero-bottom{flex-wrap:wrap;row-gap:12px}
+  .scene-top{gap:12px}
+  .terminal-bar{gap:12px;flex-wrap:wrap}
+  .internship-note{font-size:16px}
+}
