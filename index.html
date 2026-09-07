@@ -176,7 +176,7 @@
   domReady.then(() => resource(document.querySelector('img[src="assets/headshot.png"]'))).then(settled);
   Promise.all([domReady, stylesReady, resource(document.querySelector('link[href*="fonts.googleapis.com/css"]'))])
     .then(() => document.fonts ? document.fonts.ready : undefined).then(settled, settled);
-  if (!reduced) import('./assets/js/matrix-preloader.js').then(module => { if (!done) module.start(boot); }).catch(() => { /* Flat terminal remains usable without WebGL/CDN. */ });
+  if (!reduced) import('./assets/js/matrix-preloader.js?v=binary-current-1').then(module => { if (!done) module.start(boot); }).catch(() => { /* Flat terminal remains usable without WebGL/CDN. */ });
 })();
 </script>
 
